@@ -1,0 +1,106 @@
+{
+  "summary": "Search for foods by keyword",
+  "description": "Example request and response for searching foods using POST /v1/foods/search with keyword query",
+  "request": {
+    "method": "POST",
+    "url": "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=DEMO_KEY",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "cheddar cheese",
+      "dataType": ["Foundation", "SR Legacy"],
+      "pageSize": 10,
+      "pageNumber": 1,
+      "sortBy": "dataType.keyword",
+      "sortOrder": "asc"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "foodSearchCriteria": {
+        "query": "cheddar cheese",
+        "dataType": ["Foundation", "SR Legacy"],
+        "pageSize": 10,
+        "pageNumber": 1,
+        "sortBy": "dataType.keyword",
+        "sortOrder": "asc"
+      },
+      "totalHits": 42,
+      "currentPage": 1,
+      "totalPages": 5,
+      "foods": [
+        {
+          "fdcId": 328637,
+          "dataType": "Foundation",
+          "description": "Cheese, cheddar",
+          "ndbNumber": "1009",
+          "publicationDate": "4/1/2019",
+          "scientificName": null,
+          "score": 932.52,
+          "foodNutrients": [
+            {
+              "number": 1003,
+              "name": "Protein",
+              "amount": 24.9,
+              "unitName": "g",
+              "derivationCode": "A",
+              "derivationDescription": "Analytical"
+            },
+            {
+              "number": 1004,
+              "name": "Total lipid (fat)",
+              "amount": 33.14,
+              "unitName": "g",
+              "derivationCode": "A",
+              "derivationDescription": "Analytical"
+            },
+            {
+              "number": 1005,
+              "name": "Carbohydrate, by difference",
+              "amount": 1.28,
+              "unitName": "g",
+              "derivationCode": "NC",
+              "derivationDescription": "Calculated"
+            },
+            {
+              "number": 1008,
+              "name": "Energy",
+              "amount": 403,
+              "unitName": "kcal",
+              "derivationCode": "NC",
+              "derivationDescription": "Calculated"
+            }
+          ]
+        },
+        {
+          "fdcId": 173414,
+          "dataType": "SR Legacy",
+          "description": "Cheese, cheddar",
+          "ndbNumber": "1009",
+          "publicationDate": "4/1/2019",
+          "score": 912.15,
+          "foodNutrients": [
+            {
+              "number": 1003,
+              "name": "Protein",
+              "amount": 24.9,
+              "unitName": "g",
+              "derivationCode": "A",
+              "derivationDescription": "Analytical"
+            },
+            {
+              "number": 1004,
+              "name": "Total lipid (fat)",
+              "amount": 33.14,
+              "unitName": "g",
+              "derivationCode": "A",
+              "derivationDescription": "Analytical"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

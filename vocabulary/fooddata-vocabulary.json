@@ -1,0 +1,123 @@
+{
+  "title": "FoodData Central API Vocabulary",
+  "description": "Key terms, concepts, and controlled vocabularies used in the USDA FoodData Central API.",
+  "source": "https://fdc.nal.usda.gov/api-guide",
+  "terms": [
+    {
+      "term": "fdcId",
+      "label": "FDC ID",
+      "definition": "A unique integer identifier assigned to each food item in the FoodData Central database.",
+      "example": 534358
+    },
+    {
+      "term": "dataType",
+      "label": "Data Type",
+      "definition": "Indicates the category of food data. Controls which database the food originates from.",
+      "values": [
+        {
+          "value": "Branded",
+          "definition": "Foods from FDA-regulated commercial products with label information submitted by manufacturers and brand owners."
+        },
+        {
+          "value": "Foundation",
+          "definition": "Foods with extensive underlying nutrient and metadata. Generally whole, single-ingredient foods. Data derived from USDA laboratory analyses."
+        },
+        {
+          "value": "Survey (FNDDS)",
+          "definition": "Foods and beverages from the USDA Food and Nutrient Database for Dietary Studies (FNDDS), used in the What We Eat in America dietary survey."
+        },
+        {
+          "value": "SR Legacy",
+          "definition": "Foods from the Standard Reference database (SR28), the historical USDA reference for nutrient composition data."
+        },
+        {
+          "value": "Experimental",
+          "definition": "Experimental food items not yet widely released."
+        }
+      ]
+    },
+    {
+      "term": "ndbNumber",
+      "label": "NDB Number",
+      "definition": "The USDA National Nutrient Database (NDB) identification number. Applies only to Foundation and SR Legacy foods.",
+      "example": "11090"
+    },
+    {
+      "term": "gtinUpc",
+      "label": "GTIN/UPC",
+      "definition": "Global Trade Item Number or Universal Product Code identifying a branded food product. Applies only to Branded Foods.",
+      "example": "077034085228"
+    },
+    {
+      "term": "foodCode",
+      "label": "Food Code",
+      "definition": "The 8-digit FNDDS food code that uniquely identifies a food within the Survey (FNDDS) data type.",
+      "example": "27415110"
+    },
+    {
+      "term": "nutrientNumber",
+      "label": "Nutrient Number",
+      "definition": "USDA nutrient identification number used to identify specific nutrients across all food types.",
+      "commonValues": [
+        { "number": "203", "name": "Protein", "unit": "g" },
+        { "number": "204", "name": "Total lipid (fat)", "unit": "g" },
+        { "number": "205", "name": "Carbohydrate, by difference", "unit": "g" },
+        { "number": "207", "name": "Ash", "unit": "g" },
+        { "number": "208", "name": "Energy", "unit": "kcal" },
+        { "number": "209", "name": "Starch", "unit": "g" },
+        { "number": "210", "name": "Sucrose", "unit": "g" },
+        { "number": "221", "name": "Alcohol, ethyl", "unit": "g" },
+        { "number": "255", "name": "Water", "unit": "g" },
+        { "number": "262", "name": "Caffeine", "unit": "mg" },
+        { "number": "269", "name": "Sugars, total including NLEA", "unit": "g" },
+        { "number": "291", "name": "Fiber, total dietary", "unit": "g" },
+        { "number": "301", "name": "Calcium, Ca", "unit": "mg" },
+        { "number": "303", "name": "Iron, Fe", "unit": "mg" },
+        { "number": "306", "name": "Potassium, K", "unit": "mg" },
+        { "number": "307", "name": "Sodium, Na", "unit": "mg" },
+        { "number": "401", "name": "Vitamin C, total ascorbic acid", "unit": "mg" },
+        { "number": "601", "name": "Cholesterol", "unit": "mg" },
+        { "number": "605", "name": "Fatty acids, total trans", "unit": "g" },
+        { "number": "606", "name": "Fatty acids, total saturated", "unit": "g" }
+      ]
+    },
+    {
+      "term": "derivationCode",
+      "label": "Derivation Code",
+      "definition": "A code indicating how a nutrient value was derived or calculated.",
+      "commonValues": [
+        { "code": "A", "description": "Analytical" },
+        { "code": "LCCD", "description": "Calculated from a daily value percentage per serving size measure" },
+        { "code": "NC", "description": "Calculated" },
+        { "code": "BFPN", "description": "Based on a recipe or formulation" }
+      ]
+    },
+    {
+      "term": "format",
+      "label": "Response Format",
+      "definition": "Controls the verbosity of food item data returned by the API.",
+      "values": [
+        { "value": "full", "description": "Returns all available data elements for the food item (default)." },
+        { "value": "abridged", "description": "Returns a simplified set of elements suitable for listing and comparison." }
+      ]
+    },
+    {
+      "term": "brandedFoodCategory",
+      "label": "Branded Food Category",
+      "definition": "The product category of a branded food as defined by the GS1 food product category hierarchy.",
+      "example": "Popcorn, Peanuts, Seeds & Related Snacks"
+    },
+    {
+      "term": "wweiaFoodCategory",
+      "label": "WWEIA Food Category",
+      "definition": "What We Eat in America (WWEIA) food category used to classify Survey (FNDDS) foods in dietary intake analysis.",
+      "example": { "code": 3002, "description": "Meat mixed dishes" }
+    },
+    {
+      "term": "api_key",
+      "label": "API Key",
+      "definition": "A free data.gov API key required for all requests. Can be passed as query parameter api_key or HTTP header X-Api-Key. The DEMO_KEY can be used for testing with reduced rate limits.",
+      "signup": "https://api.data.gov/signup/"
+    }
+  ]
+}

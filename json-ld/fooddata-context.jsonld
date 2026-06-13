@@ -1,0 +1,192 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "fdc": "https://fdc.nal.usda.gov/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "FoodItem": "schema:FoodEstablishment",
+    "BrandedFoodItem": "fdc:BrandedFoodItem",
+    "FoundationFoodItem": "fdc:FoundationFoodItem",
+    "SRLegacyFoodItem": "fdc:SRLegacyFoodItem",
+    "SurveyFoodItem": "fdc:SurveyFoodItem",
+    "AbridgedFoodItem": "fdc:AbridgedFoodItem",
+    "SearchResult": "fdc:SearchResult",
+    "SearchResultFood": "fdc:SearchResultFood",
+    "FoodNutrient": "fdc:FoodNutrient",
+    "Nutrient": "fdc:Nutrient",
+    "FoodCategory": "fdc:FoodCategory",
+    "FoodPortion": "fdc:FoodPortion",
+    "FoodComponent": "fdc:FoodComponent",
+    "FoodAttribute": "fdc:FoodAttribute",
+
+    "fdcId": {
+      "@id": "fdc:fdcId",
+      "@type": "xsd:integer"
+    },
+    "dataType": {
+      "@id": "fdc:dataType",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "brandOwner": {
+      "@id": "schema:brand",
+      "@type": "xsd:string"
+    },
+    "gtinUpc": {
+      "@id": "schema:gtin",
+      "@type": "xsd:string"
+    },
+    "ingredients": {
+      "@id": "schema:ingredients",
+      "@type": "xsd:string"
+    },
+    "servingSize": {
+      "@id": "schema:servingSize",
+      "@type": "xsd:float"
+    },
+    "servingSizeUnit": {
+      "@id": "fdc:servingSizeUnit",
+      "@type": "xsd:string"
+    },
+    "calories": {
+      "@id": "schema:calories",
+      "@type": "xsd:float"
+    },
+    "publicationDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:string"
+    },
+    "modifiedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:string"
+    },
+    "availableDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:string"
+    },
+    "scientificName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "ndbNumber": {
+      "@id": "fdc:ndbNumber",
+      "@type": "xsd:string"
+    },
+    "foodCode": {
+      "@id": "fdc:foodCode",
+      "@type": "xsd:string"
+    },
+    "brandedFoodCategory": {
+      "@id": "schema:category",
+      "@type": "xsd:string"
+    },
+    "isHistoricalReference": {
+      "@id": "fdc:isHistoricalReference",
+      "@type": "xsd:boolean"
+    },
+    "foodNutrients": {
+      "@id": "fdc:foodNutrients",
+      "@container": "@set"
+    },
+    "nutrient": {
+      "@id": "fdc:nutrient"
+    },
+    "amount": {
+      "@id": "fdc:amount",
+      "@type": "xsd:float"
+    },
+    "unitName": {
+      "@id": "fdc:unitName",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "number": {
+      "@id": "fdc:nutrientNumber",
+      "@type": "xsd:string"
+    },
+    "rank": {
+      "@id": "fdc:rank",
+      "@type": "xsd:integer"
+    },
+    "dataPoints": {
+      "@id": "fdc:dataPoints",
+      "@type": "xsd:integer"
+    },
+    "min": {
+      "@id": "fdc:minValue",
+      "@type": "xsd:float"
+    },
+    "max": {
+      "@id": "fdc:maxValue",
+      "@type": "xsd:float"
+    },
+    "median": {
+      "@id": "fdc:medianValue",
+      "@type": "xsd:float"
+    },
+    "totalHits": {
+      "@id": "fdc:totalHits",
+      "@type": "xsd:integer"
+    },
+    "currentPage": {
+      "@id": "fdc:currentPage",
+      "@type": "xsd:integer"
+    },
+    "totalPages": {
+      "@id": "fdc:totalPages",
+      "@type": "xsd:integer"
+    },
+    "foods": {
+      "@id": "fdc:foods",
+      "@container": "@set"
+    },
+    "score": {
+      "@id": "fdc:relevanceScore",
+      "@type": "xsd:float"
+    },
+    "foodCategory": {
+      "@id": "fdc:foodCategory"
+    },
+    "foodPortions": {
+      "@id": "fdc:foodPortions",
+      "@container": "@set"
+    },
+    "foodComponents": {
+      "@id": "fdc:foodComponents",
+      "@container": "@set"
+    },
+    "wweiaFoodCategory": {
+      "@id": "fdc:wweiaFoodCategory"
+    },
+    "wweiaFoodCategoryCode": {
+      "@id": "fdc:wweiaFoodCategoryCode",
+      "@type": "xsd:integer"
+    },
+    "wweiaFoodCategoryDescription": {
+      "@id": "fdc:wweiaFoodCategoryDescription",
+      "@type": "xsd:string"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://fdc.nal.usda.gov/",
+      "@type": "schema:DataCatalog",
+      "schema:name": "USDA FoodData Central",
+      "schema:description": "USDA FoodData Central is a comprehensive food composition database and REST API providing nutritional data for over 600,000 foods.",
+      "schema:url": "https://fdc.nal.usda.gov/",
+      "schema:license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "schema:publisher": {
+        "@type": "schema:GovernmentOrganization",
+        "schema:name": "USDA Agricultural Research Service (ARS)",
+        "schema:url": "https://www.ars.usda.gov/"
+      }
+    }
+  ]
+}

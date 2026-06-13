@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://fdc.nal.usda.gov/schemas/food-item.json",
+  "title": "FoodItem",
+  "description": "A food item in the USDA FoodData Central database, representing one of several food data types.",
+  "oneOf": [
+    { "$ref": "#/definitions/AbridgedFoodItem" },
+    { "$ref": "#/definitions/BrandedFoodItem" },
+    { "$ref": "#/definitions/FoundationFoodItem" },
+    { "$ref": "#/definitions/SRLegacyFoodItem" },
+    { "$ref": "#/definitions/SurveyFoodItem" }
+  ],
+  "definitions": {
+    "AbridgedFoodItem": {
+      "type": "object",
+      "title": "AbridgedFoodItem",
+      "description": "Abridged representation of a food item with minimal nutrient data.",
+      "required": ["fdcId", "dataType", "description"],
+      "properties": {
+        "fdcId": { "type": "integer", "description": "Unique FoodData Central ID", "example": 534358 },
+        "dataType": { "type": "string", "description": "The type of food data", "example": "Branded" },
+        "description": { "type": "string", "description": "The description of the food", "example": "NUT 'N BERRY MIX" },
+        "publicationDate": { "type": "string", "description": "Date the item was published to FDC", "example": "4/1/2019" },
+        "brandOwner": { "type": "string", "description": "Brand owner (Branded Foods only)", "example": "Kar Nut Products Company" },
+        "gtinUpc": { "type": "string", "description": "GTIN or UPC code (Branded Foods only)", "example": "077034085228" },
+        "ndbNumber": { "type": "string", "description": "NDB number (Foundation and SRLegacy Foods only)", "example": "7954" },
+        "foodCode": { "type": "string", "description": "Food code (Survey Foods only)", "example": "27415110" },
+        "foodNutrients": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/AbridgedFoodNutrient" }
+        }
+      }
+    },
+    "BrandedFoodItem": {
+      "type": "object",
+      "title": "BrandedFoodItem",
+      "description": "A branded food item with full label and ingredient information.",
+      "required": ["fdcId", "dataType", "description"],
+      "properties": {
+        "fdcId": { "type": "integer", "example": 534358 },
+        "dataType": { "type": "string", "example": "Branded" },
+        "description": { "type": "string", "example": "NUT 'N BERRY MIX" },
+        "brandOwner": { "type": "string", "example": "Kar Nut Products Company" },
+        "gtinUpc": { "type": "string", "example": "077034085228" },
+        "ingredients": { "type": "string", "description": "Ingredient list as printed on label" },
+        "servingSize": { "type": "number", "example": 28 },
+        "servingSizeUnit": { "type": "string", "example": "g" },
+        "brandedFoodCategory": { "type": "string", "example": "Popcorn, Peanuts, Seeds & Related Snacks" },
+        "availableDate": { "type": "string", "example": "8/18/2018" },
+        "modifiedDate": { "type": "string", "example": "8/18/2018" },
+        "publicationDate": { "type": "string", "example": "4/1/2019" },
+        "foodNutrients": { "type": "array", "items": { "$ref": "#/definitions/FoodNutrient" } }
+      }
+    },
+    "FoundationFoodItem": {
+      "type": "object",
+      "title": "FoundationFoodItem",
+      "description": "A Foundation food item with detailed analytical nutrient data.",
+      "required": ["fdcId", "dataType", "description"],
+      "properties": {
+        "fdcId": { "type": "integer", "example": 747448 },
+        "dataType": { "type": "string", "example": "Foundation" },
+        "description": { "type": "string", "example": "Strawberries, raw" },
+        "ndbNumber": { "type": "string", "example": "9316" },
+        "scientificName": { "type": "string", "example": "Fragaria X ananassa" },
+        "isHistoricalReference": { "type": "boolean", "example": false },
+        "publicationDate": { "type": "string", "example": "12/16/2019" },
+        "foodNutrients": { "type": "array", "items": { "$ref": "#/definitions/FoodNutrient" } }
+      }
+    },
+    "SRLegacyFoodItem": {
+      "type": "object",
+      "title": "SRLegacyFoodItem",
+      "description": "An SR Legacy food item from the Standard Reference database.",
+      "required": ["fdcId", "dataType", "description"],
+      "properties": {
+        "fdcId": { "type": "integer", "example": 170379 },
+        "dataType": { "type": "string", "example": "SR Legacy" },
+        "description": { "type": "string", "example": "Broccoli, raw" },
+        "ndbNumber": { "type": "string", "example": "11090" },
+        "scientificName": { "type": "string", "example": "Brassica oleracea var. italica" },
+        "isHistoricalReference": { "type": "boolean", "example": true },
+        "publicationDate": { "type": "string", "example": "4/1/2019" },
+        "foodNutrients": { "type": "array", "items": { "$ref": "#/definitions/FoodNutrient" } }
+      }
+    },
+    "SurveyFoodItem": {
+      "type": "object",
+      "title": "SurveyFoodItem",
+      "description": "A Survey (FNDDS) food item used in dietary intake surveys.",
+      "required": ["fdcId", "dataType", "description"],
+      "properties": {
+        "fdcId": { "type": "integer", "example": 337985 },
+        "datatype": { "type": "string", "example": "Survey (FNDDS)" },
+        "description": { "type": "string", "example": "Beef curry" },
+        "foodCode": { "type": "string", "example": "27116100" },
+        "startDate": { "type": "string", "example": "1/1/2013" },
+        "endDate": { "type": "string", "example": "12/31/2014" },
+        "publicationDate": { "type": "string", "example": "4/1/2019" }
+      }
+    },
+    "AbridgedFoodNutrient": {
+      "type": "object",
+      "title": "AbridgedFoodNutrient",
+      "description": "Simplified nutrient data for an abridged food item.",
+      "properties": {
+        "number": { "type": "integer", "example": 303 },
+        "name": { "type": "string", "example": "Iron, Fe" },
+        "amount": { "type": "number", "example": 0.53 },
+        "unitName": { "type": "string", "example": "mg" },
+        "derivationCode": { "type": "string", "example": "LCCD" },
+        "derivationDescription": { "type": "string", "example": "Calculated from a daily value percentage per serving size measure" }
+      }
+    },
+    "FoodNutrient": {
+      "type": "object",
+      "title": "FoodNutrient",
+      "description": "Full nutrient data for a food item including statistical measures.",
+      "properties": {
+        "id": { "type": "integer", "example": 167514 },
+        "amount": { "type": "number", "example": 0 },
+        "dataPoints": { "type": "integer", "example": 49 },
+        "min": { "type": "number", "example": 73.73 },
+        "max": { "type": "number", "example": 91.8 },
+        "median": { "type": "number", "example": 90.3 },
+        "type": { "type": "string", "example": "FoodNutrient" },
+        "nutrient": { "$ref": "#/definitions/Nutrient" }
+      }
+    },
+    "Nutrient": {
+      "type": "object",
+      "title": "Nutrient",
+      "description": "A nutrient definition with USDA nutrient number and unit.",
+      "properties": {
+        "id": { "type": "integer", "example": 1005 },
+        "number": { "type": "string", "example": "305" },
+        "name": { "type": "string", "example": "Carbohydrate, by difference" },
+        "rank": { "type": "integer", "example": 1110 },
+        "unitName": { "type": "string", "example": "g" }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "summary": "Retrieve multiple foods by FDC IDs",
+  "description": "Example request and response for batch retrieval of up to 20 foods using POST /v1/foods",
+  "request": {
+    "method": "POST",
+    "url": "https://api.nal.usda.gov/fdc/v1/foods?api_key=DEMO_KEY",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "fdcIds": [534358, 373052, 616350],
+      "format": "abridged",
+      "nutrients": [203, 204, 205, 208]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "fdcId": 534358,
+        "dataType": "Branded",
+        "description": "NUT 'N BERRY MIX",
+        "publicationDate": "4/1/2019",
+        "brandOwner": "Kar Nut Products Company",
+        "gtinUpc": "077034085228",
+        "foodNutrients": [
+          { "number": 203, "name": "Protein", "amount": 14.29, "unitName": "g" },
+          { "number": 204, "name": "Total lipid (fat)", "amount": 32.14, "unitName": "g" },
+          { "number": 205, "name": "Carbohydrate, by difference", "amount": 42.86, "unitName": "g" },
+          { "number": 208, "name": "Energy", "amount": 500, "unitName": "kcal" }
+        ]
+      },
+      {
+        "fdcId": 373052,
+        "dataType": "Branded",
+        "description": "APPLE JUICE",
+        "publicationDate": "4/1/2019",
+        "foodNutrients": [
+          { "number": 203, "name": "Protein", "amount": 0.1, "unitName": "g" },
+          { "number": 204, "name": "Total lipid (fat)", "amount": 0.1, "unitName": "g" },
+          { "number": 205, "name": "Carbohydrate, by difference", "amount": 11.3, "unitName": "g" },
+          { "number": 208, "name": "Energy", "amount": 46, "unitName": "kcal" }
+        ]
+      },
+      {
+        "fdcId": 616350,
+        "dataType": "Branded",
+        "description": "WHOLE GRAIN BREAD",
+        "publicationDate": "4/1/2019",
+        "foodNutrients": [
+          { "number": 203, "name": "Protein", "amount": 7.14, "unitName": "g" },
+          { "number": 204, "name": "Total lipid (fat)", "amount": 3.57, "unitName": "g" },
+          { "number": 205, "name": "Carbohydrate, by difference", "amount": 46.43, "unitName": "g" },
+          { "number": 208, "name": "Energy", "amount": 250, "unitName": "kcal" }
+        ]
+      }
+    ]
+  }
+}

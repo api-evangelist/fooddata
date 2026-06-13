@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://fdc.nal.usda.gov/schemas/search-result.json",
+  "title": "SearchResult",
+  "description": "Response schema for food search endpoints, containing paginated food results.",
+  "type": "object",
+  "properties": {
+    "foodSearchCriteria": {
+      "type": "object",
+      "description": "A copy of the criteria that were used in the search."
+    },
+    "totalHits": {
+      "type": "integer",
+      "description": "The total number of foods found matching the search criteria.",
+      "example": 1034
+    },
+    "currentPage": {
+      "type": "integer",
+      "description": "The current page of results being returned."
+    },
+    "totalPages": {
+      "type": "integer",
+      "description": "The total number of pages found matching the search criteria."
+    },
+    "foods": {
+      "type": "array",
+      "description": "The list of foods found matching the search criteria.",
+      "items": {
+        "$ref": "#/definitions/SearchResultFood"
+      }
+    }
+  },
+  "definitions": {
+    "SearchResultFood": {
+      "type": "object",
+      "required": ["fdcId", "description"],
+      "properties": {
+        "fdcId": {
+          "type": "integer",
+          "description": "Unique ID of the food.",
+          "example": 45001529
+        },
+        "dataType": {
+          "type": "string",
+          "description": "The type of the food data.",
+          "example": "Branded"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the food.",
+          "example": "BROCCOLI"
+        },
+        "foodCode": {
+          "type": "string",
+          "description": "A unique ID identifying the food within FNDDS."
+        },
+        "publicationDate": {
+          "type": "string",
+          "description": "Date the item was published to FDC.",
+          "example": "4/1/2019"
+        },
+        "scientificName": {
+          "type": "string",
+          "description": "The scientific name of the food."
+        },
+        "brandOwner": {
+          "type": "string",
+          "description": "Brand owner for the food. Only applies to Branded Foods.",
+          "example": "Supervalu, Inc."
+        },
+        "gtinUpc": {
+          "type": "string",
+          "description": "GTIN or UPC code identifying the food. Only applies to Branded Foods.",
+          "example": "041303020937"
+        },
+        "ingredients": {
+          "type": "string",
+          "description": "The list of ingredients as it appears on the product label. Only applies to Branded Foods."
+        },
+        "ndbNumber": {
+          "type": "string",
+          "description": "Unique number assigned for foundation foods. Only applies to Foundation and SRLegacy Foods."
+        },
+        "additionalDescriptions": {
+          "type": "string",
+          "description": "Any additional descriptions of the food.",
+          "example": "Coon; sharp cheese; Tillamook; Hoop; Pioneer; New York; Wisconsin; Longhorn"
+        },
+        "score": {
+          "type": "number",
+          "description": "Relative score indicating how well the food matches the search criteria."
+        },
+        "foodNutrients": {
+          "type": "array",
+          "description": "Nutrient data for the food item.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": { "type": "integer" },
+              "name": { "type": "string" },
+              "amount": { "type": "number" },
+              "unitName": { "type": "string" },
+              "derivationCode": { "type": "string" },
+              "derivationDescription": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

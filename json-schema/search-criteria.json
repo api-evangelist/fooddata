@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://fdc.nal.usda.gov/schemas/search-criteria.json",
+  "title": "FoodSearchCriteria",
+  "description": "Request body schema for the POST /v1/foods/search endpoint to search for foods by keyword.",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "Search terms to use in the search. The string may also include standard search operators.",
+      "example": "Cheddar cheese"
+    },
+    "dataType": {
+      "type": "array",
+      "description": "Optional. Filter on a specific data type; specify one or more values in an array.",
+      "items": {
+        "type": "string",
+        "enum": ["Branded", "Foundation", "Survey (FNDDS)", "SR Legacy"]
+      },
+      "minItems": 1,
+      "maxItems": 4,
+      "example": ["Foundation", "SR Legacy"]
+    },
+    "pageSize": {
+      "type": "integer",
+      "description": "Optional. Maximum number of results to return for the current page. Default is 50.",
+      "minimum": 1,
+      "maximum": 200,
+      "example": 25
+    },
+    "pageNumber": {
+      "type": "integer",
+      "description": "Optional. Page number to retrieve.",
+      "example": 2
+    },
+    "sortBy": {
+      "type": "string",
+      "description": "Optional. Specify one of the possible values to sort by that field.",
+      "enum": ["dataType.keyword", "lowercaseDescription.keyword", "fdcId", "publishedDate"]
+    },
+    "sortOrder": {
+      "type": "string",
+      "description": "Optional. The sort direction for the results.",
+      "enum": ["asc", "desc"]
+    },
+    "brandOwner": {
+      "type": "string",
+      "description": "Optional. Filter results based on the brand owner of the food. Only applies to Branded Foods.",
+      "example": "Kar Nut Products Company"
+    }
+  }
+}
