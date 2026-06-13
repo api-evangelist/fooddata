@@ -1,0 +1,76 @@
+name: FoodData Central Rate Limits
+description: Rate limiting policies for the USDA FoodData Central REST API
+url: https://fdc.nal.usda.gov/api-guide
+created: 2026-06-13
+modified: 2026-06-13
+rateLimits:
+
+  - name: Demo Key Hourly Limit
+    description: >
+      The DEMO_KEY allows up to 30 requests per hour per IP address. No registration required.
+      Suitable only for evaluation and initial testing.
+    plan: Demo Key
+    limit: 30
+    period: hour
+    scope: ip
+    enforcement: HTTP 429 Too Many Requests
+
+  - name: Demo Key Daily Limit
+    description: >
+      The DEMO_KEY is capped at 50 requests per day per IP address in addition to
+      the hourly limit.
+    plan: Demo Key
+    limit: 50
+    period: day
+    scope: ip
+    enforcement: HTTP 429 Too Many Requests
+
+  - name: Standard Hourly Limit
+    description: >
+      Registered API key holders are allowed 1,000 requests per hour per IP address.
+      Exceeding this limit will result in the API key being temporarily blocked for 1 hour.
+      Rate limit status is communicated via response headers.
+    plan: Standard (Free)
+    limit: 1000
+    period: hour
+    scope: ip
+    enforcement: HTTP 429 Too Many Requests; key blocked for 1 hour
+    headers:
+      - name: X-RateLimit-Limit
+        description: Total requests allowed in the current rate limit window
+      - name: X-RateLimit-Remaining
+        description: Requests remaining in the current rate limit window
+
+  - name: Bulk Lookup Limit
+    description: >
+      The /v1/foods endpoint (multi-food lookup) accepts a maximum of 20 FDC IDs per request.
+    plan: Standard (Free)
+    limit: 20
+    period: request
+    scope: endpoint
+    enforcement: Parameter validation error
+
+  - name: Nutrient Filter Limit
+    description: >
+      The nutrients query parameter is limited to up to 25 nutrient numbers per request
+      when filtering nutrient data returned.
+    plan: Standard (Free)
+    limit: 25
+    period: request
+    scope: parameter
+    enforcement: Parameter validation error
+
+  - name: Page Size Limit
+    description: >
+      The /v1/foods/list and /v1/foods/search endpoints support a maximum of 200 items
+      per page (pageSize parameter). Default page size is 50.
+    plan: Standard (Free)
+    limit: 200
+    period: request
+    scope: parameter
+    enforcement: Parameter clamped to maximum
+
+notes: >
+  Higher rate limits are available upon request by contacting the FoodData Central team at
+  https://fdc.nal.usda.gov/contact. All data is freely available under CC0 1.0 Universal
+  public domain licensing.

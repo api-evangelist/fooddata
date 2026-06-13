@@ -1,0 +1,84 @@
+aid: fooddata
+url: https://raw.githubusercontent.com/api-evangelist/fooddata/refs/heads/main/apis.yml
+name: FoodData Central
+kind: government
+description: >-
+  USDA FoodData Central is a comprehensive food composition database and REST API providing
+  nutritional data for over 600,000 foods. The service covers multiple distinct data types
+  including Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and
+  Experimental Foods. All data is released under CC0 1.0 Universal (public domain) and
+  the API is free to use with a data.gov API key. FoodData Central is operated by the
+  USDA Agricultural Research Service (ARS) and receives twice-annual updates for
+  Foundation Foods and monthly updates for Branded Foods.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Food
+  - Nutrition
+  - USDA
+  - Government
+  - Health
+  - Diet
+  - Nutrients
+  - Public Domain
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+apis:
+  - aid: fooddata:fooddata-central-api
+    name: FoodData Central API
+    description: >-
+      REST API providing access to nutrient composition data for 600,000+ foods across
+      Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and Experimental
+      Foods databases. Supports individual food lookup by FDC ID, batch retrieval of up
+      to 20 foods, paginated food listing with filtering and sorting, and keyword search
+      with brand filtering. Authentication requires a free data.gov API key. Standard
+      rate limit is 1,000 requests per hour per IP address.
+    humanURL: https://fdc.nal.usda.gov/api-guide
+    baseURL: https://api.nal.usda.gov/fdc/v1
+    tags:
+      - Nutrition
+      - Food
+      - Nutrients
+      - Diet
+      - Branded Foods
+      - Foundation Foods
+      - FNDDS
+    properties:
+      - type: Documentation
+        url: https://fdc.nal.usda.gov/api-guide
+      - type: OpenAPI
+        url: https://api.nal.usda.gov/fdc/v1/json-spec?api_key=DEMO_KEY
+      - type: OpenAPI
+        url: https://api.nal.usda.gov/fdc/v1/yaml-spec?api_key=DEMO_KEY
+      - type: Signup
+        url: https://fdc.nal.usda.gov/api-key-signup
+common:
+  - type: Website
+    url: https://fdc.nal.usda.gov/
+  - type: Documentation
+    url: https://fdc.nal.usda.gov/api-guide
+  - type: Portal
+    url: https://fdc.nal.usda.gov/
+  - type: Signup
+    url: https://fdc.nal.usda.gov/api-key-signup
+  - type: About
+    url: https://fdc.nal.usda.gov/about-us
+  - type: Contact
+    url: https://fdc.nal.usda.gov/contact
+  - type: FAQ
+    url: https://fdc.nal.usda.gov/faq
+  - type: DataDownload
+    url: https://fdc.nal.usda.gov/download-datasets
+  - type: ChangeLog
+    url: https://fdc.nal.usda.gov/log
+  - type: X
+    url: https://twitter.com/usda_ars
+  - type: Plans
+    url: plans/fooddata-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fooddata-rate-limits.yml
+  - type: FinOps
+    url: finops/fooddata-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

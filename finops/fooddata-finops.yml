@@ -1,0 +1,70 @@
+name: FoodData Central FinOps
+description: Financial operations guidance for USDA FoodData Central API usage
+url: https://fdc.nal.usda.gov/api-guide
+created: 2026-06-13
+modified: 2026-06-13
+summary: >
+  The USDA FoodData Central API is entirely free to use. All nutritional data is
+  released under CC0 1.0 Universal (public domain dedication), meaning there are
+  no licensing fees, usage charges, or overage costs of any kind. Cost management
+  focuses on efficient use of rate limits and API call optimization rather than
+  budget control.
+
+costModel:
+  type: free
+  currency: USD
+  basePrice: 0.00
+  overageCost: 0.00
+  notes: >
+    No cost at any usage level. The API is a US government service provided by the
+    USDA Agricultural Research Service. Higher rate limit tiers are also free and
+    available upon request.
+
+optimization:
+  - strategy: Batch Requests
+    description: >
+      Use the POST /v1/foods endpoint to retrieve up to 20 foods in a single API call
+      rather than making individual /v1/food/{fdcId} requests. This reduces total
+      request count by up to 20x for bulk lookups.
+
+  - strategy: Use Abridged Format
+    description: >
+      Request abridged format via the format=abridged query parameter or use the
+      /v1/foods/list endpoint when full nutrient detail is not needed. Reduces
+      payload size and processing time.
+
+  - strategy: Nutrient Filtering
+    description: >
+      Specify the nutrients parameter (up to 25 nutrient numbers) to retrieve only
+      the specific nutrients your application needs rather than the full nutrient profile.
+
+  - strategy: Cache Responses
+    description: >
+      FoodData Central data changes on a predictable schedule (Foundation Foods twice
+      per year in April and October; Branded Foods monthly). Cache API responses locally
+      and refresh on that schedule to minimize redundant API calls.
+
+  - strategy: Search Before Lookup
+    description: >
+      Use /v1/foods/search to identify relevant FDC IDs first, then batch-fetch full
+      details only for foods your users actually need.
+
+  - strategy: Monitor Rate Limit Headers
+    description: >
+      Track X-RateLimit-Limit and X-RateLimit-Remaining response headers to stay within
+      the 1,000 requests/hour standard limit and avoid temporary key blocks.
+
+  - strategy: Request Higher Limits Proactively
+    description: >
+      If application growth is anticipated to exceed 1,000 requests/hour, contact
+      FoodData Central in advance at https://fdc.nal.usda.gov/contact to arrange
+      a higher rate limit at no cost.
+
+dataLicensing:
+  license: CC0 1.0 Universal
+  url: https://creativecommons.org/publicdomain/zero/1.0/
+  notes: >
+    All FoodData Central data is in the public domain. No attribution is required
+    though crediting USDA FoodData Central as the data source is recommended.
+    Branded food label data sourced from Label Insight ceased new updates after
+    November 16, 2023.

@@ -1,0 +1,61 @@
+name: FoodData Central Plans and Pricing
+description: FoodData Central API access plans and pricing tiers from USDA
+url: https://fdc.nal.usda.gov/api-guide
+created: 2026-06-13
+modified: 2026-06-13
+plans:
+
+  - name: Demo Key
+    description: Limited access key for testing and evaluation purposes without registration.
+    url: https://fdc.nal.usda.gov/api-guide
+    price: 0.00
+    currency: USD
+    billingCycle: none
+    rateLimit:
+      requests: 30
+      period: hour
+    dailyLimit:
+      requests: 50
+      period: day
+    features:
+      - Access to all FoodData Central API endpoints
+      - No registration required
+      - Limited to DEMO_KEY usage
+
+  - name: Standard (Free)
+    description: >
+      Full API access available at no cost after registering for a data.gov API key.
+      Provides 1,000 requests per hour per IP address. Suitable for most applications.
+      All data is in the public domain under CC0 1.0 Universal licensing.
+    url: https://fdc.nal.usda.gov/api-key-signup
+    price: 0.00
+    currency: USD
+    billingCycle: none
+    rateLimit:
+      requests: 1000
+      period: hour
+    features:
+      - Access to all FoodData Central API endpoints
+      - 600,000+ food items including branded, foundation, survey, and experimental
+      - Foundation Foods, SR Legacy, Survey (FNDDS), and Branded Food data types
+      - Nutrient composition data
+      - Search, list, and individual food lookup endpoints
+      - CC0 1.0 Universal public domain data
+      - Monthly updates for Branded Foods
+      - Twice-annual updates for Foundation Foods (April and October)
+
+  - name: High Volume (Custom)
+    description: >
+      Higher request rate limits available upon request by contacting FoodData Central.
+      Intended for applications that exceed the standard 1,000 requests/hour threshold.
+    url: https://fdc.nal.usda.gov/contact
+    price: 0.00
+    currency: USD
+    billingCycle: none
+    rateLimit:
+      requests: custom
+      period: hour
+    features:
+      - All Standard tier features
+      - Custom rate limit negotiated with FoodData Central team
+      - Contact required to enable
