@@ -10,7 +10,7 @@ description: >-
   the API is free to use with a data.gov API key. FoodData Central is operated by the
   USDA Agricultural Research Service (ARS) and receives twice-annual updates for
   Foundation Foods and monthly updates for Branded Foods.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Food
   - Nutrition
