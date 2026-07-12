@@ -53,6 +53,10 @@ apis:
       - type: Signup
         url: https://fdc.nal.usda.gov/api-key-signup
 common:
+  - type: DomainSecurity
+    url: security/fooddata-domain-security.yml
+  - type: Authentication
+    url: authentication/fooddata-authentication.yml
   - type: Website
     url: https://fdc.nal.usda.gov/
   - type: Documentation
