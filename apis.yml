@@ -10,7 +10,20 @@ description: >-
   the API is free to use with a data.gov API key. FoodData Central is operated by the
   USDA Agricultural Research Service (ARS) and receives twice-annual updates for
   Foundation Foods and monthly updates for Branded Foods.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fooddata.png
 tags:
   - Food
   - Nutrition
@@ -24,34 +37,20 @@ created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.19'
 apis:
-  - aid: fooddata:fooddata-central-api
-    name: FoodData Central API
-    description: >-
-      REST API providing access to nutrient composition data for 600,000+ foods across
-      Foundation Foods, SR Legacy, Survey Foods (FNDDS), Branded Foods, and Experimental
-      Foods databases. Supports individual food lookup by FDC ID, batch retrieval of up
-      to 20 foods, paginated food listing with filtering and sorting, and keyword search
-      with brand filtering. Authentication requires a free data.gov API key. Standard
-      rate limit is 1,000 requests per hour per IP address.
-    humanURL: https://fdc.nal.usda.gov/api-guide
-    baseURL: https://api.nal.usda.gov/fdc/v1
-    tags:
-      - Nutrition
-      - Food
-      - Nutrients
-      - Diet
-      - Branded Foods
-      - Foundation Foods
-      - FNDDS
-    properties:
-      - type: Documentation
-        url: https://fdc.nal.usda.gov/api-guide
-      - type: OpenAPI
-        url: https://api.nal.usda.gov/fdc/v1/json-spec?api_key=DEMO_KEY
-      - type: OpenAPI
-        url: https://api.nal.usda.gov/fdc/v1/yaml-spec?api_key=DEMO_KEY
-      - type: Signup
-        url: https://fdc.nal.usda.gov/api-key-signup
+- aid: fooddata:fooddata-fdc-api
+  name: FoodData Central FDC API
+  description: endpoints to retrieve nutrient data
+  humanURL: https://fdc.nal.usda.gov/api-guide
+  baseURL: https://api.nal.usda.gov/fdc/v1
+  tags:
+  - FDC
+  properties:
+  - type: OpenAPI
+    url: openapi/fooddata-fdc-api-openapi.yml
+  - type: Documentation
+    url: https://fdc.nal.usda.gov/api-guide
+  - type: Signup
+    url: https://fdc.nal.usda.gov/api-key-signup
 common:
   - type: AgenticAccess
     url: agentic-access/fooddata-agentic-access.yml
