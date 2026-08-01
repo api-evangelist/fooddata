@@ -1,0 +1,14 @@
+{
+  "provider": "fooddata",
+  "sources": [
+    "fooddata-fdc-api-openapi.yml"
+  ],
+  "outputs": [
+    "fooddata-fdc-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
